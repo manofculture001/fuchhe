@@ -1,35 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine Animation</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 🌹</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <div class="stage">
-    <div id="loading" class="loading">
-      <div class="spinner"></div>
-    </div>
+<div class="stage" id="stage">
 
-    <div id="countdown" class="countdown">
-      <div id="countHolder"></div>
-    </div>
-
-    <img id="actor" class="actor" src="https://cdn.pixabay.com/photo/2013/07/12/12/58/silhouette-147882_1280.png" alt="Walking person">
-
-    <div id="bouquet" class="bouquet">
-      <div id="flower" class="flower"></div>
-    </div>
-
-    <div id="text" class="text">
-      तिमीले नपाएको रोजको सट्टा — तिमीले भरिएको यो फूल
-    </div>
-
-    <button id="restart" class="restart">Restart</button>
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Countdown Overlay -->
+  <div class="countdown" id="countdown">
+    <div class="count" id="countHolder"></div>
+  </div>
+
+  <!-- Walking Character -->
+  <div class="actor" id="actor">
+    <svg viewBox="0 0 120 220">
+      <circle cx="60" cy="30" r="18" fill="#fff" stroke="#111" stroke-width="4"/>
+      <line x1="60" y1="48" x2="60" y2="120" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="70" x2="10" y2="100" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="70" x2="110" y2="100" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="120" x2="40" y2="180" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="120" x2="80" y2="180" stroke="#111" stroke-width="6"/>
+    </svg>
+  </div>
+
+  <!-- Bouquet Container -->
+  <div class="bouquet">
+    <div class="flower" id="flower">
+      <!-- Petals will be dynamically added here -->
+    </div>
+  </div>
+
+  <!-- Bottom Text -->
+  <div class="text" id="text">
+    तिमीले नपाएको रोजको सट्टा — तिमीले भरिएको यो फूल 🌹
+  </div>
+
+  <!-- Restart Button -->
+  <button class="restart" id="restart">Restart</button>
+
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>
