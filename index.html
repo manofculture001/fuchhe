@@ -1,36 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ne">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You 🌹</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="stage">
+<div class="stage" id="stage">
 
-  <div id="loading" class="loading">🌸 Loading...</div>
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+  </div>
 
-  <div id="countdown" class="countdown hidden">
+  <div class="countdown" id="countdown">
     <div id="countHolder"></div>
   </div>
 
-  <img id="actor" class="actor hidden" 
-       src="https://via.placeholder.com/100x200" 
-       alt="stickman">
-
-  <div id="bouquet" class="bouquet hidden">
-    <div class="petal"><img src="https://picsum.photos/200?random=1"></div>
-    <div class="petal"><img src="https://picsum.photos/200?random=2"></div>
-    <div class="petal"><img src="https://picsum.photos/200?random=3"></div>
-    <div class="petal"><img src="https://picsum.photos/200?random=4"></div>
-    <div class="petal"><img src="https://picsum.photos/200?random=5"></div>
+  <div class="actor" id="actor">
+    <svg viewBox="0 0 120 220">
+      <circle cx="60" cy="30" r="18" fill="#fff" stroke="#111" stroke-width="4"/>
+      <line x1="60" y1="48" x2="60" y2="120" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="70" x2="10" y2="100" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="70" x2="110" y2="100" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="120" x2="40" y2="180" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="120" x2="80" y2="180" stroke="#111" stroke-width="6"/>
+    </svg>
   </div>
 
-  <div id="text" class="message hidden">Ful Mnexy Ley Ful 🌹</div>
+  <div class="bouquet" id="bouquet">
+    <div class="flower" id="flower"></div>
+  </div>
 
-  <button id="restart" class="restart hidden">Restart</button>
+  <div class="text" id="text">
+    तिमीले नपाएको रोजको सट्टा — तिमीले भरिएको यो फूल 🌹
+  </div>
+
+  <button class="restart" id="restart">Restart</button>
 
 </div>
 
