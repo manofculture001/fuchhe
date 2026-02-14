@@ -1,159 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ne">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stickman Bouquet</title>
-
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: #ffeef2;
-  overflow: hidden;
-}
-
-/* ---------------- STICKMAN ---------------- */
-
-.stickman {
-  position: absolute;
-  bottom: 120px;
-  left: -120px;
-  width: 60px;
-  height: 140px;
-  animation: walkIn 5s linear forwards;
-}
-
-/* head */
-.head {
-  width: 22px;
-  height: 22px;
-  border: 3px solid black;
-  border-radius: 50%;
-  margin: auto;
-}
-
-/* body */
-.body {
-  width: 3px;
-  height: 45px;
-  background: black;
-  margin: auto;
-}
-
-/* arms */
-.arm {
-  width: 40px;
-  height: 3px;
-  background: black;
-  position: absolute;
-  top: 40px;
-  left: 10px;
-  transform-origin: left center;
-}
-
-.arm.left {
-  animation: armMove 0.5s infinite alternate;
-}
-
-.arm.right {
-  animation: armMove 0.5s infinite alternate-reverse;
-}
-
-/* legs */
-.leg {
-  width: 40px;
-  height: 3px;
-  background: black;
-  position: absolute;
-  top: 85px;
-  left: 10px;
-  transform-origin: left center;
-}
-
-.leg.left {
-  animation: legMove 0.5s infinite alternate;
-}
-
-.leg.right {
-  animation: legMove 0.5s infinite alternate-reverse;
-}
-
-/* walk forward */
-@keyframes walkIn {
-  from { left: -120px; }
-  to { left: 45%; }
-}
-
-@keyframes legMove {
-  from { transform: rotate(25deg); }
-  to { transform: rotate(-25deg); }
-}
-
-@keyframes armMove {
-  from { transform: rotate(-25deg); }
-  to { transform: rotate(25deg); }
-}
-
-/* ---------------- BOUQUET ---------------- */
-
-.bouquet {
-  position: absolute;
-  top: 32px;
-  left: 35px;
-  transform: scale(0.6); /* smaller bouquet */
-}
-
-/* flowers */
-.flower {
-  width: 14px;
-  height: 14px;
-  background: red;
-  border-radius: 50%;
-  position: absolute;
-}
-
-.flower:nth-child(1) { left: 0; top: 0; }
-.flower:nth-child(2) { left: 10px; top: -6px; }
-.flower:nth-child(3) { left: 20px; top: 0; }
-.flower:nth-child(4) { left: 10px; top: 8px; }
-
-/* stem */
-.stem {
-  width: 3px;
-  height: 30px;
-  background: green;
-  position: absolute;
-  left: 14px;
-  top: 10px;
-}
-
-</style>
+<title>For You 🌹</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="stickman">
+<div class="stage" id="stage">
 
-  <div class="head"></div>
-  <div class="body"></div>
-
-  <div class="arm left"></div>
-  <div class="arm right"></div>
-
-  <div class="leg left"></div>
-  <div class="leg right"></div>
-
-  <!-- Bouquet -->
-  <div class="bouquet">
-    <div class="flower"></div>
-    <div class="flower"></div>
-    <div class="flower"></div>
-    <div class="flower"></div>
-    <div class="stem"></div>
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
   </div>
+
+  <!-- Countdown Overlay -->
+  <div class="countdown" id="countdown">
+    <div class="count" id="countHolder"></div>
+  </div>
+
+  <!-- Walking Character -->
+  <div class="actor" id="actor">
+    <svg viewBox="0 0 120 220">
+      <circle cx="60" cy="30" r="18" fill="#fff" stroke="#111" stroke-width="4"/>
+      <line x1="60" y1="48" x2="60" y2="120" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="70" x2="10" y2="100" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="70" x2="110" y2="100" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="120" x2="40" y2="180" stroke="#111" stroke-width="6"/>
+      <line x1="60" y1="120" x2="80" y2="180" stroke="#111" stroke-width="6"/>
+    </svg>
+  </div>
+
+  <!-- Bouquet Container -->
+  <div class="bouquet">
+    <div class="flower" id="flower">
+      <!-- Petals will be dynamically added here -->
+    </div>
+  </div>
+
+  <!-- Bottom Text -->
+  <div class="text" id="text">
+    तिमीले नपाएको रोजको सट्टा — तिमीले भरिएको यो फूल 🌹
+  </div>
+
+  <!-- Restart Button -->
+  <button class="restart" id="restart">Restart</button>
 
 </div>
 
+<script src="js/script.js"></script>
 </body>
 </html>
