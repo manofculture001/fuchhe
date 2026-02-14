@@ -2,6 +2,7 @@
   --rose:#ff4f7a;
   --bg1:#fff5f8;
   --bg2:#fdeef4;
+  --ink:#1f1f1f;
 }
 
 body{
@@ -9,10 +10,11 @@ body{
   font-family:sans-serif;
   background:linear-gradient(135deg,var(--bg1),var(--bg2));
   overflow:hidden;
+  height:100vh;
 }
 
 .stage{
-  height:100vh;
+  height:100%;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -20,9 +22,7 @@ body{
   position:relative;
 }
 
-.hidden{
-  display:none;
-}
+.hidden{ display:none; }
 
 .loading{
   font-size:24px;
@@ -38,23 +38,27 @@ body{
 .countdown{
   font-size:80px;
   font-weight:bold;
+  color:var(--rose);
 }
 
 .actor{
-  width:200px;
+  width:100px;
   position:absolute;
-  left:10%;
+  left:-150px; /* start off-screen */
   bottom:0;
-  z-index:1;
+  z-index:2;
+  transition:left 2s linear;
 }
 
 .bouquet{
   width:350px;
   height:350px;
-  position:relative;
+  position:absolute;
+  bottom:50px;
   display:flex;
   justify-content:center;
   align-items:center;
+  z-index:3;
 }
 
 .petal{
@@ -85,8 +89,19 @@ body{
   z-index:10;
 }
 
+.message{
+  position:absolute;
+  top:20%;
+  font-size:36px;
+  color:var(--rose);
+  font-weight:bold;
+  z-index:4;
+}
+
 .restart{
-  margin-top:30px;
+  position:absolute;
+  bottom:20px;
+  right:20px;
   padding:10px 20px;
   border:none;
   background:var(--rose);
