@@ -209,3 +209,62 @@ body{
   );
   opacity:0.8;
 }
+.text{
+  position:absolute;
+  bottom:25px;              /* moved downward */
+  width:100%;
+  text-align:center;
+  font-size:22px;           /* reduced size */
+  font-weight:600;
+  opacity:0;
+  transition:opacity 1.5s ease;
+  line-height:1.4;
+  z-index:30;
+  padding:0 16px;           /* prevents overflow on mobile */
+}
+
+.text.show{
+  opacity:1;
+}
+@media (max-width: 768px) {
+
+  .stage{
+    border-radius:16px;
+  }
+
+  .text{
+    font-size:18px;        /* smaller text for mobile */
+    bottom:18px;
+  }
+
+  .restart{
+    bottom:15px;
+    right:15px;
+    padding:10px 20px;
+    font-size:15px;
+  }
+
+  .petal.active{
+    width:90vw !important;
+    height:auto !important;
+    max-height:70vh;
+  }
+
+  .bouquet{
+    width:90vw;
+    height:90vw;
+    top:48%;
+  }
+}
+@media (max-width: 480px) {
+
+  .text{
+    font-size:16px;
+  }
+
+  .restart{
+    font-size:14px;
+    padding:8px 18px;
+  }
+}
+
