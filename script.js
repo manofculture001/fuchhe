@@ -1,13 +1,31 @@
 const photos=[
-  "photos/1.jpg","photos/2.jpg","photos/3.jpg",
-  "photos/4.jpg","photos/5.jpg","photos/6.jpg"
+  "images/img1.jpeg",
+  "images/img2.jpeg",
+  "images/img3.jpeg",
+  "images/img4.jpeg",
+  "images/img5.jpeg",
+  "images/img6.jpeg",
+  "images/img7.jpeg",
+  "images/img8.jpeg",
+  "images/img9.jpeg",
+  "images/img10.jpeg",
+  "images/img11.jpeg",
+  "images/img12.jpeg",
+  "images/img13.jpeg",
+  "images/img14.jpeg",
+  "images/img15.jpeg",
+  "images/img16.jpeg",
+  "images/img17.jpeg",
+  "images/img18.jpeg",
+  "images/img19.jpeg",
+  "images/img20.jpeg",
+  "images/img21.jpeg"
 ];
 
 const loading=document.getElementById("loading");
 const countdown=document.getElementById("countdown");
 const countHolder=document.getElementById("countHolder");
 const actor=document.getElementById("actor");
-const bouquet=document.getElementById("bouquet");
 const flower=document.getElementById("flower");
 const text=document.getElementById("text");
 const restart=document.getElementById("restart");
@@ -39,52 +57,50 @@ function startScene(){
 
 function createBouquet(){
   flower.innerHTML="";
-  const centerX = flower.offsetWidth / 2;
-  const centerY = flower.offsetHeight / 2;
+  const centerX=flower.offsetWidth/2;
+  const centerY=flower.offsetHeight/2;
 
-  let usedPhotos=[];
+  let used=[];
   function getPhoto(){
     for(let i=0;i<photos.length;i++){
-      if(!usedPhotos.includes(i)){
-        usedPhotos.push(i); return photos[i];
-      }
+      if(!used.includes(i)){used.push(i);return photos[i];}
     }
     return photos[Math.floor(Math.random()*photos.length)];
   }
 
-  function createPetal(x, y, size, imgSrc, angle=0){
+  function createPetal(x,y,size,img,angle=0){
     const petal=document.createElement("div");
     petal.className="petal";
     petal.style.width=size+"px";
     petal.style.height=size+"px";
     petal.style.left=x+"px";
     petal.style.top=y+"px";
-    petal.style.transform=`translate(-50%, -50%) rotate(${angle}deg)`;
+    petal.style.transform=`translate(-50%,-50%) rotate(${angle}deg)`;
 
-    const img=document.createElement("img");
-    img.src=imgSrc;
-    petal.appendChild(img);
+    const image=document.createElement("img");
+    image.src=img;
+    petal.appendChild(image);
 
     addClickHandler(petal);
     flower.appendChild(petal);
   }
 
-  // Center petal
-  createPetal(centerX, centerY, 100, photos[photos.length-1]);
+  createPetal(centerX,centerY,100,photos.at(-1));
 
-  // Surrounding petals
-  const layers=[
-    {count:8, radius:120, size:80},
-    {count:12, radius:200, size:70}
-  ];
-
-  layers.forEach(layer=>{
-    const angleStep=(2*Math.PI)/layer.count;
+  [
+    {count:8,radius:120,size:80},
+    {count:12,radius:200,size:70}
+  ].forEach(layer=>{
+    const step=(2*Math.PI)/layer.count;
     for(let i=0;i<layer.count;i++){
-      const angle=i*angleStep;
-      const x=centerX + Math.cos(angle)*layer.radius;
-      const y=centerY + Math.sin(angle)*layer.radius;
-      createPetal(x, y, layer.size, getPhoto(), angle*180/Math.PI);
+      const a=i*step;
+      createPetal(
+        centerX+Math.cos(a)*layer.radius,
+        centerY+Math.sin(a)*layer.radius,
+        layer.size,
+        getPhoto(),
+        a*180/Math.PI
+      );
     }
   });
 }
@@ -95,14 +111,12 @@ function addClickHandler(petal){
   close.textContent="×";
   close.onclick=e=>{
     e.stopPropagation();
-    flower.classList.remove("dim");
     document.querySelectorAll(".petal").forEach(p=>p.classList.remove("active"));
   };
   petal.appendChild(close);
 
   petal.onclick=e=>{
     e.stopPropagation();
-    flower.classList.add("dim");
     document.querySelectorAll(".petal").forEach(p=>p.classList.remove("active"));
     petal.classList.add("active");
   };
@@ -110,26 +124,23 @@ function addClickHandler(petal){
 
 function createFloatingHearts(){
   for(let i=0;i<40;i++){
-    const heart=document.createElement("div");
-    heart.className="heart";
-    heart.style.left=Math.random()*100+"%";
-    heart.style.top=-20+"px";
-    heart.style.width=5+Math.random()*10+"px";
-    heart.style.height=5+Math.random()*10+"px";
-    document.body.appendChild(heart);
-    let speed=0.5+Math.random()*1;
-    function fall(){
-      let top=parseFloat(heart.style.top);
+    const h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()*100+"%";
+    h.style.top="-20px";
+    document.body.appendChild(h);
+
+    let speed=0.5+Math.random();
+    (function fall(){
+      let top=parseFloat(h.style.top);
       if(top>window.innerHeight){
-        heart.style.top=-20+"px";
-        heart.style.left=Math.random()*100+"%";
-      } else {
-        heart.style.top=(top+speed)+"px";
-        heart.style.left=parseFloat(heart.style.left)+Math.sin(top/50)*0.3+"%";
+        h.style.top="-20px";
+        h.style.left=Math.random()*100+"%";
+      }else{
+        h.style.top=(top+speed)+"px";
       }
       requestAnimationFrame(fall);
-    }
-    fall();
+    })();
   }
 }
 
@@ -141,4 +152,7 @@ restart.onclick=()=>{
   startCountdown();
 };
 
-setTimeout(()=>{loading.style.display="none";startCountdown();},1500);
+setTimeout(()=>{
+  loading.style.display="none";
+  startCountdown();
+},1500);
