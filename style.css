@@ -319,4 +319,14 @@ body{
     font-size:16px;
   }
 }
+.loading{
+  pointer-events:none;
+}
+html, body {
+  min-height: 100%;
+}
+loading.style.display="none";
+loading.style.opacity="0";
+setTimeout(()=>loading.style.display="none",300);
+
 
