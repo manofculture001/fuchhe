@@ -268,3 +268,55 @@ body{
   }
 }
 
+.text{
+  position:absolute;
+  bottom:25px;
+  width:100%;
+  text-align:center;
+
+  font-size:22px;
+  font-weight:700;
+  line-height:1.5;
+  letter-spacing:0.3px;
+
+  background:linear-gradient(
+    90deg,
+    #ff4f7a,
+    #ff9ac1,
+    #ff6fa1,
+    #ff4f7a
+  );
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+
+  opacity:0;
+  transition:opacity 1.5s ease;
+  animation: textFlow 6s ease-in-out infinite;
+
+  padding:0 16px;
+  z-index:30;
+}
+
+.text.show{
+  opacity:1;
+}
+@keyframes textFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@media (max-width: 768px){
+  .text{
+    font-size:18px;
+    bottom:18px;
+  }
+}
+
+@media (max-width: 480px){
+  .text{
+    font-size:16px;
+  }
+}
+
